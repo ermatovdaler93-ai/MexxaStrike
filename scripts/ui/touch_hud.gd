@@ -197,6 +197,22 @@ func _draw() -> void:
     _text(Vector2(24.0, 46.0), "%s %d:%02d" % [Game.t("time"), mins, secs % 60], 34, Color.WHITE)
     _text(Vector2(24.0, 90.0), "%s %d" % [Game.t("score"), arena.score], 34, ORANGE)
 
+    # Player status: HP and Armor
+    var hp_value := clampi(int(player.hp), 0, int(player.max_hp))
+    var armor_value := clampi(int(player.armor), 0, int(player.max_armor))
+    var bar_width := 220.0
+    var bar_height := 14.0
+    var hp_ratio := float(hp_value) / maxf(float(player.max_hp), 1.0)
+    var armor_ratio := float(armor_value) / maxf(float(player.max_armor), 1.0)
+
+    _text(Vector2(24.0, 137.0), "HP  %d / %d" % [hp_value, player.max_hp], 22, Color.WHITE)
+    draw_rect(Rect2(24.0, 147.0, bar_width, bar_height), Color(0.15, 0.15, 0.15, 0.85))
+    draw_rect(Rect2(24.0, 147.0, bar_width * hp_ratio, bar_height), Color(0.25, 0.85, 0.35))
+
+    _text(Vector2(24.0, 190.0), "ARMOR  %d / %d" % [armor_value, player.max_armor], 22, Color.WHITE)
+    draw_rect(Rect2(24.0, 200.0, bar_width, bar_height), Color(0.15, 0.15, 0.15, 0.85))
+    draw_rect(Rect2(24.0, 200.0, bar_width * armor_ratio, bar_height), Color(0.25, 0.65, 1.0))
+
     # Оружие и патроны (внизу по центру)
     var w = player.current_weapon()
     _text(Vector2(center.x - 160.0, s.y - 78.0), w.display_name, 30, ORANGE, 320.0,

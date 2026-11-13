@@ -16,6 +16,13 @@ const EYE_STAND := 1.6
 const EYE_CROUCH := 1.05
 
 var active := true
+
+# Player status: initial display values
+var hp: int = 100
+var max_hp: int = 100
+var armor: int = 100
+var max_armor: int = 100
+
 var move_input := Vector2.ZERO    # x - вправо, y - назад (джойстик вверх = вперёд)
 var look_delta := Vector2.ZERO    # градусы за кадр: x - рыскание, y - тангаж
 var want_fire := false
