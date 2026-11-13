@@ -7,13 +7,15 @@ config_version=5
 [application]
 
 config/name="MEXXA STRIKE"
-run/main_scene="res://scenes/boot/phase1.tscn"
+run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+config/quit_on_go_back=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 Boot="*res://scripts/core/boot.gd"
+Game="*res://scripts/core/game.gd"
 
 [display]
 
