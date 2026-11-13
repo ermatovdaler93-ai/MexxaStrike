@@ -191,6 +191,11 @@ func _draw() -> void:
         draw_line(center + Vector2(-12.0, 12.0), center + Vector2(-5.0, 5.0), hc, 3.0)
         draw_line(center + Vector2(12.0, 12.0), center + Vector2(5.0, 5.0), hc, 3.0)
 
+    # FPS display (actual measured rate, not the selected cap).
+    if bool(Game.profile.get("show_fps", true)):
+        _text(Vector2(24.0, 238.0), "FPS %d" % Engine.get_frames_per_second(), 24, ORANGE, 145.0,
+            HORIZONTAL_ALIGNMENT_RIGHT)
+
     # Верхняя панель: время и счёт
     var secs := int(ceil(arena.time_left))
     var mins := floori(secs / 60.0)

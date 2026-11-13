@@ -49,7 +49,7 @@ jobs:
 
       # Первый запуск редактора создаёт кеш импорта ресурсов
       - name: Import project
-        run: godot --headless --verbose --editor --quit || true
+        run: godot --headless --path . --verbose --editor --quit
 
       - name: Export debug APK
         env:

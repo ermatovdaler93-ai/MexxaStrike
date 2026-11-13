@@ -34,6 +34,7 @@ func _ready() -> void:
     var hud = Hud.new()
     layer.add_child(hud)
     hud.setup(player, self)
+    Game.call_deferred("apply_performance_settings")
 
 
 func _process(delta: float) -> void:
